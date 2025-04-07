@@ -31,6 +31,43 @@ function BasicComponent() {
     if (hour < 18) return "afternoon";
     return "evening";
   };
+
+  //---------------------------Practice Functions Space--------------------------
+
+  const user = {
+    name: 'Nihal',
+    age:'25',
+    experienceYears:'2',
+    role:'Full-Stack-Developer',
+    skills:['react','vue','python','express','node','docker']
+
+    
+  }
+
+  //----------------------------------------
+
+  const greeting2 =() =>{
+    const hour = new Date().getHours()
+    if (hour<12){return 'Morning'}
+    if (hour<18){return 'afternoon'}
+
+
+    return 'evening'
+  }
+
+
+  //----------------------------------------
+
+  const meetingDetails = {
+    title:'React Meetup',
+    date:'2025-04-09',
+    startTime:'10:00 AM',
+    endTime:'11:00 AM',
+    host:'John Doe',
+    participants:['Alice','Bob','Charlie']
+  }
+
+  
   
   // Simple conditional logic for rendering
   const isMorning = getTimeOfDay() === "morning";
@@ -61,6 +98,7 @@ function BasicComponent() {
       <div className="mt-6 pt-4 border-t">
         <h3 className="font-bold text-lg mb-2">Your Turn: Coding Exercises</h3>
         
+        
         {/* 
         Exercise 1: Create a user profile section
         - Create a user object with properties like name, role, experience
@@ -77,7 +115,17 @@ function BasicComponent() {
             1. Create a user object above with properties: name, role, experienceYears, skills (array)
             2. Render the properties in this card 
             */}
-            <p className="text-red-500">Replace this with your user profile implementation</p>
+            <div className='flex-col align-middle'>
+                <span className='font-semibold p-2 text-xl '>User Profile</span>
+                <div className='flex flex-col bg-emerald-100 p-2 rounded-lg mt-2'>
+                  <span>Name : {user.name}</span>
+                <span>Role : {user.role}</span>
+                <span>Age : {user.age}</span>
+                <span>Experiance : {user.experienceYears}</span>
+                </div>
+                
+            </div>
+            {/* <p className="text-red-500">Replace this with your user profile implementation</p> */}
           </div>
         </div>
         
@@ -94,11 +142,14 @@ function BasicComponent() {
           <div className="p-3 bg-white rounded border">
             {/* 
             TASK:
-            1. Create a function that returns different content based on the current hour
+            1. Create a function that returns different content based on the current hour -done
             2. Display a different background color depending on time of day 
             3. Use inline styles or conditional classes 
             */}
-            <p className="text-red-500">Replace this with your time-based component</p>
+            {/* <p className="text-red-500">Replace this with your time-based component</p> */}
+            <div>
+              <span className='isMoring'>Good {greeting2()} ! {isMorning ? 'lets Start Fresh':'Hello Welcome back'}</span>
+            </div>
           </div>
         </div>
         
@@ -119,6 +170,17 @@ function BasicComponent() {
             3. Add at least one conditional rendering element (e.g. "Meeting is today" if the date matches today)
             */}
             <p className="text-red-500">Replace this with your meeting information display</p>
+            <div className='flex flex-col bg-emerald-100 p-2 rounded-lg mt-2'>
+              <span>Meeting Title : {meetingDetails.title}</span>
+              <span>Date : {meetingDetails.date}</span>
+              <span>Start Time : {meetingDetails.startTime}</span>
+              <span>End Time : {meetingDetails.endTime}</span>
+              <span>Host : {meetingDetails.host}</span>
+              <span>Participants : {meetingDetails.participants.join(', ')}</span>
+            </div>
+            <div>
+              {meetingDetails.date === new Date().toISOString().split('T')[0] ? "Meeting is today" : "Meeting is not today"}
+            </div>
           </div>
         </div>
       </div>
